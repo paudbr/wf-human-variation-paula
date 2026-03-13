@@ -1,0 +1,644 @@
+mar-13 09:47:53.021 [main] DEBUG nextflow.cli.Launcher - Setting http proxy: ProxyConfig[protocol=http; host=10.15.206.126; port=3128]
+mar-13 09:47:53.043 [main] DEBUG nextflow.cli.Launcher - Setting https proxy: ProxyConfig[protocol=https; host=10.15.206.126; port=3128]
+mar-13 09:47:53.044 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --bam ../wf-human-variation-demo/demo.bam --ref ../wf-human-variation-demo/demo.fasta --bed ../wf-human-variation-demo/demo.bed --sample_name DEMO --mod --phased --annotation false --sv false --cnv false --str false --refine_snp_with_sv false --run_deeptools true --genes_bed /home/paula/data/ONT/wf-human-variation-paula/assets/genes_chrom20.bed --validate_params false -profile singularity -resume
+mar-13 09:47:53.095 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 25.10.4
+mar-13 09:47:53.109 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/paula/.nextflow/plugins; core-plugins: nf-amazon@3.4.4,nf-azure@1.20.2,nf-cloudcache@0.5.0,nf-codecommit@0.5.0,nf-console@1.3.0,nf-google@1.23.5,nf-k8s@1.2.2,nf-tower@1.17.5,nf-wave@1.16.1
+mar-13 09:47:53.125 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+mar-13 09:47:53.126 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+mar-13 09:47:53.129 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+mar-13 09:47:53.141 [main] DEBUG nextflow.util.RetryConfig - Missing nextflow session - using default retry config
+mar-13 09:47:53.237 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+mar-13 09:47:53.258 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/paula/data/ONT/wf-human-variation-paula/nextflow.config
+mar-13 09:47:53.260 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/paula/data/ONT/wf-human-variation-paula/nextflow.config
+mar-13 09:47:53.280 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `singularity`
+mar-13 09:47:53.844 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [standard, conda, singularity, awsbatch, discrete_gpus, local]
+mar-13 09:47:53.870 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+mar-13 09:47:53.870 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+mar-13 09:47:53.880 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/paula/.nextflow/secrets/store.json
+mar-13 09:47:53.882 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@2e13f304] - activable => nextflow.secret.LocalSecretsProvider@2e13f304
+mar-13 09:47:53.884 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+mar-13 09:47:53.898 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [backstabbing_fermi] DSL2 - revision: 161bb71c42
+mar-13 09:47:53.930 [main] DEBUG nextflow.Session - Session UUID: 48aecfe3-54e9-4b2f-8d4b-5cc37a9249cd
+mar-13 09:47:53.931 [main] DEBUG nextflow.Session - Run name: backstabbing_fermi
+mar-13 09:47:53.931 [main] DEBUG nextflow.Session - Executor pool size: 32
+mar-13 09:47:53.937 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+mar-13 09:47:53.940 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+mar-13 09:47:53.953 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 25.10.4 build 11173
+  Created: 10-02-2026 15:17 UTC 
+  System: Linux 6.8.0-101-generic
+  Runtime: Groovy 4.0.28 on OpenJDK 64-Bit Server VM 17.0.18-internal+0-adhoc.conda.src
+  Encoding: UTF-8 (UTF-8)
+  Process: 1895801@FRS-BINF-01 [127.0.1.1]
+  CPUs: 32 - Mem: 62.8 GB (6.2 GB) - Swap: 4 GB (4 GB)
+mar-13 09:47:53.970 [main] DEBUG nextflow.Session - Work-dir: /home/paula/data/ONT/wf-human-variation-paula/work [ext2/ext3]
+mar-13 09:47:53.987 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+mar-13 09:47:53.994 [main] DEBUG nextflow.Session - Observer factory (v2): LinObserverFactory
+mar-13 09:47:53.996 [main] DEBUG nextflow.Session - Observer factory (v2): DefaultObserverFactory
+mar-13 09:47:54.026 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+mar-13 09:47:54.032 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 33; maxThreads: 1000
+mar-13 09:47:54.097 [main] DEBUG nextflow.Session - Session start
+mar-13 09:47:54.100 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: output/execution/trace.txt
+mar-13 09:47:54.103 [main] DEBUG nextflow.Session - Using default localLib path: /home/paula/data/ONT/wf-human-variation-paula/lib
+mar-13 09:47:54.106 [main] DEBUG nextflow.Session - Adding to the classpath library: /home/paula/data/ONT/wf-human-variation-paula/lib
+mar-13 09:47:54.106 [main] DEBUG nextflow.Session - Adding to the classpath library: /home/paula/data/ONT/wf-human-variation-paula/lib/nfcore_external_java_deps.jar
+mar-13 09:47:55.309 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+mar-13 09:47:59.359 [main] INFO  nextflow.Nextflow - 
+[0;92m||||||||||   [0m[2m_____ ____ ___ ____  __  __ _____
+[0;92m||||||||||  [0m[2m| ____|  _ \_ _|___ \|  \/  | ____|
+[0;33m|||||       [0m[2m|  _| | |_) | |  __) | |\/| |  _|
+[0;33m|||||       [0m[2m| |___|  __/| | / __/| |  | | |__
+[0;94m||||||||||  [0m[2m|_____|_|  |___|_____|_|  |_|_____|
+[0;94m||||||||||  [0m[1mwf-human-variation v2.8.0[0m
+[2m--------------------------------------------------------------------------------[0m
+[1mCore Nextflow options[0m
+  [0;34mrunName           : [0;32mbackstabbing_fermi[0m
+  [0;34mcontainerEngine   : [0;32msingularity[0m
+  [0;34mcontainer         : [0;32m[withLabel:wf_human_snp:ontresearch/wf-human-variation-snp:sha8cc7e88ff71bf593d7852309a31d3adb29a7caeb, withLabel:wf_human_sv:ontresearch/wf-human-variation-sv:sha8134f9fef5e19605c7fb4c1348961d6771f1af79, withLabel:wf_human_mod:ontresearch/modkit:sha489d708a48c66368e5d1e118538e5dca68203a64, withLabel:wf_cnv:ontresearch/wf-cnv:sha428cb19e51370020ccf29ec2af4eead44c6a17c2, withLabel:wf_human_str:ontresearch/wf-human-variation-str:shadd2f2963fe39351d4e0d6fa3ca54e1064c6ec057, withLabel:snpeff_annotation:ontresearch/snpeff:sha367007eed5a09f992c2067f77776d9878806302a, withLabel:wf_common:ontresearch/wf-common:shafdd79f8e4a6faad77513c36f623693977b92b08e, withLabel:spectre:ontresearch/spectre:sha42472d37a5a992c3ee27894a23dce5e2fff66d27, withLabel:longphase:ontresearch/longphase:sha4ff1cd9a6eee338a414082cb24f943bcc4ce8e7c, default:ontresearch/wf-human-variation:sha8ecee6d351b0c2609b452f3a368c390587f6662d][0m
+  [0;34mlaunchDir         : [0;32m/home/paula/data/ONT/wf-human-variation-paula[0m
+  [0;34mworkDir           : [0;32m/home/paula/data/ONT/wf-human-variation-paula/work[0m
+  [0;34mprojectDir        : [0;32m/home/paula/data/ONT/wf-human-variation-paula[0m
+  [0;34muserName          : [0;32mpaula[0m
+  [0;34mprofile           : [0;32msingularity[0m
+  [0;34mconfigFiles       : [0;32m/home/paula/data/ONT/wf-human-variation-paula/nextflow.config[0m
+
+[1mWorkflow Options[0m
+  [0;34mmod               : [0;32mtrue[0m
+
+[1mMain options[0m
+  [0;34msample_name       : [0;32mDEMO[0m
+  [0;34mbam               : [0;32m../wf-human-variation-demo/demo.bam[0m
+  [0;34mref               : [0;32m../wf-human-variation-demo/demo.fasta[0m
+  [0;34mbed               : [0;32m../wf-human-variation-demo/demo.bed[0m
+  [0;34mannotation        : [0;32mfalse[0m
+  [0;34mphased            : [0;32mtrue[0m
+
+[1mSmall variant calling options[0m
+  [0;34mrefine_snp_with_sv: [0;32mfalse[0m
+
+[1mOther parameters[0m
+  [0;34mvalidate_params   : [0;32mfalse[0m
+
+!! Only displaying parameters that differ from the pipeline defaults !!
+[2m--------------------------------------------------------------------------------[0m
+If you use epi2me-labs/wf-human-variation for your analysis please cite:
+
+* The nf-core framework
+  https://doi.org/10.1038/s41587-020-0439-x
+
+
+[2m--------------------------------------------------------------------------------[0m
+This is epi2me-labs/wf-human-variation v2.8.0.
+[2m--------------------------------------------------------------------------------[0m
+mar-13 09:47:59.409 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name prepare_reference:cram_cache
+mar-13 09:47:59.411 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.412 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.418 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+mar-13 09:47:59.421 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=32; memory=62.8 GB; capacity=32; pollInterval=100ms; dumpInterval=5m
+mar-13 09:47:59.422 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+mar-13 09:47:59.436 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'prepare_reference:cram_cache': maxForks=0; fair=false; array=0
+mar-13 09:47:59.817 [main] INFO  nextflow.Nextflow - Searching input for [.bam, .ubam] files.
+mar-13 09:47:59.832 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:checkBamHeaders
+mar-13 09:47:59.833 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.833 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.834 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:checkBamHeaders': maxForks=0; fair=false; array=0
+mar-13 09:47:59.840 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:sortBam
+mar-13 09:47:59.840 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.840 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.841 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:sortBam': maxForks=0; fair=false; array=0
+mar-13 09:47:59.848 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:mergeBams
+mar-13 09:47:59.848 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withName:mergeBams` matches process ingress:mergeBams
+mar-13 09:47:59.849 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.849 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.849 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:mergeBams': maxForks=0; fair=false; array=0
+mar-13 09:47:59.851 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:catSortBams
+mar-13 09:47:59.852 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.852 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.852 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:catSortBams': maxForks=0; fair=false; array=0
+mar-13 09:47:59.857 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:validateIndex
+mar-13 09:47:59.857 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.857 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.858 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:validateIndex': maxForks=0; fair=false; array=0
+mar-13 09:47:59.862 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `ingress,wf_common` for process with name ingress:samtools_index
+mar-13 09:47:59.863 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.863 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.864 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:samtools_index': maxForks=0; fair=false; array=0
+mar-13 09:47:59.884 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name ingress:check_for_alignment
+mar-13 09:47:59.884 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.884 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.885 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:check_for_alignment': maxForks=0; fair=false; array=0
+mar-13 09:47:59.892 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.892 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.892 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'ingress:minimap2_alignment': maxForks=0; fair=false; array=0
+mar-13 09:47:59.899 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.899 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.899 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'sanitise_bed': maxForks=0; fair=false; array=0
+mar-13 09:47:59.902 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.902 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.903 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mosdepth_input': maxForks=0; fair=false; array=0
+mar-13 09:47:59.907 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.908 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.908 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'getVersions': maxForks=0; fair=false; array=0
+mar-13 09:47:59.909 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name getParams
+mar-13 09:47:59.910 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.910 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.910 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'getParams': maxForks=0; fair=false; array=0
+mar-13 09:47:59.912 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.912 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.913 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'get_region_coverage': maxForks=0; fair=false; array=0
+mar-13 09:47:59.916 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name readStats
+mar-13 09:47:59.917 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.917 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.917 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'readStats': maxForks=0; fair=false; array=0
+mar-13 09:47:59.949 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name makeAlignmentReport
+mar-13 09:47:59.949 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.949 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.950 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'makeAlignmentReport': maxForks=0; fair=false; array=0
+mar-13 09:47:59.964 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name failedQCReport
+mar-13 09:47:59.965 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.965 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.965 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'failedQCReport': maxForks=0; fair=false; array=0
+mar-13 09:47:59.980 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name lookup_clair3_model
+mar-13 09:47:59.980 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.980 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.981 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'lookup_clair3_model': maxForks=0; fair=false; array=0
+mar-13 09:47:59.987 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:make_chunks
+mar-13 09:47:59.988 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:47:59.988 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:47:59.989 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:make_chunks': maxForks=0; fair=false; array=0
+mar-13 09:47:59.999 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:pileup_variants
+mar-13 09:48:00.000 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.000 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.001 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:pileup_variants': maxForks=0; fair=false; array=0
+mar-13 09:48:00.001 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [0]
+mar-13 09:48:00.008 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:aggregate_pileup_variants
+mar-13 09:48:00.009 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.009 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.009 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:aggregate_pileup_variants': maxForks=0; fair=false; array=0
+mar-13 09:48:00.012 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:select_het_snps
+mar-13 09:48:00.012 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.012 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.013 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:select_het_snps': maxForks=0; fair=false; array=0
+mar-13 09:48:00.013 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [0]
+mar-13 09:48:00.018 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:longphase` matches labels `longphase` for process with name snp:phase_contig
+mar-13 09:48:00.018 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.018 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.019 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:phase_contig': maxForks=0; fair=false; array=0
+mar-13 09:48:00.020 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:get_qual_filter
+mar-13 09:48:00.021 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.021 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.021 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:get_qual_filter': maxForks=0; fair=false; array=0
+mar-13 09:48:00.024 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:create_candidates
+mar-13 09:48:00.024 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.024 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.025 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:create_candidates': maxForks=0; fair=false; array=0
+mar-13 09:48:00.025 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [0]
+mar-13 09:48:00.034 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:evaluate_candidates
+mar-13 09:48:00.035 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.035 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.035 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:evaluate_candidates': maxForks=0; fair=false; array=0
+mar-13 09:48:00.042 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:aggregate_full_align_variants
+mar-13 09:48:00.042 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.042 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.043 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:aggregate_full_align_variants': maxForks=0; fair=false; array=0
+mar-13 09:48:00.049 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:merge_pileup_and_full_vars
+mar-13 09:48:00.050 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.050 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.051 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:merge_pileup_and_full_vars': maxForks=0; fair=false; array=0
+mar-13 09:48:00.051 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [0]
+mar-13 09:48:00.057 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.057 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.058 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:post_clair_phase_contig': maxForks=0; fair=false; array=0
+mar-13 09:48:00.060 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.060 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.060 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:post_clair_contig_haplotag': maxForks=0; fair=false; array=0
+mar-13 09:48:00.073 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name snp:extract_not_haplotagged_contigs
+mar-13 09:48:00.074 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.074 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.075 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:extract_not_haplotagged_contigs': maxForks=0; fair=false; array=0
+mar-13 09:48:00.082 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:cat_haplotagged_contigs
+mar-13 09:48:00.083 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.083 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.083 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:cat_haplotagged_contigs': maxForks=0; fair=false; array=0
+mar-13 09:48:00.089 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name snp:aggregate_all_variants
+mar-13 09:48:00.090 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.090 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.090 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:aggregate_all_variants': maxForks=0; fair=false; array=0
+mar-13 09:48:00.094 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.094 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.095 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'snp:haploblocks_snp': maxForks=0; fair=false; array=0
+mar-13 09:48:00.109 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.109 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.109 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'bed_filter': maxForks=0; fair=false; array=0
+mar-13 09:48:00.112 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name vcfStats
+mar-13 09:48:00.113 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.113 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.113 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'vcfStats': maxForks=0; fair=false; array=0
+mar-13 09:48:00.115 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name report_snp:getVersions
+mar-13 09:48:00.115 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.115 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.116 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'report_snp:getVersions': maxForks=0; fair=false; array=0
+mar-13 09:48:00.118 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name report_snp:makeReport
+mar-13 09:48:00.119 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.119 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.119 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'report_snp:makeReport': maxForks=0; fair=false; array=0
+mar-13 09:48:00.125 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_snp` matches labels `wf_human_snp` for process with name output_snp
+mar-13 09:48:00.126 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.126 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.126 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'output_snp': maxForks=0; fair=false; array=0
+mar-13 09:48:00.129 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name validate_modbam
+mar-13 09:48:00.130 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.130 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.130 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'validate_modbam': maxForks=0; fair=false; array=0
+mar-13 09:48:00.136 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_mod` matches labels `wf_human_mod` for process with name sample_probs
+mar-13 09:48:00.136 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.136 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.137 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'sample_probs': maxForks=0; fair=false; array=0
+mar-13 09:48:00.143 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_mod` matches labels `wf_human_mod` for process with name mod:modkit_phase
+mar-13 09:48:00.143 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.143 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.144 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mod:modkit_phase': maxForks=0; fair=false; array=0
+mar-13 09:48:00.151 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.151 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.151 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mod:concat_bedmethyl': maxForks=0; fair=false; array=0
+mar-13 09:48:00.156 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_mod` matches labels `wf_human_mod` for process with name mod:modkit_tobigwig
+mar-13 09:48:00.156 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.156 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.157 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mod:modkit_tobigwig': maxForks=0; fair=false; array=0
+mar-13 09:48:00.165 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_human_mod` matches labels `wf_human_mod` for process with name mod:deeptools_heatmaps
+mar-13 09:48:00.165 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.165 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.166 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'mod:deeptools_heatmaps': maxForks=0; fair=false; array=0
+mar-13 09:48:00.176 [main] DEBUG n.script.dsl.ProcessConfigBuilder - Config settings `withLabel:wf_common` matches labels `wf_common` for process with name combine_metrics_json
+mar-13 09:48:00.177 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.177 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.177 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'combine_metrics_json': maxForks=0; fair=false; array=0
+mar-13 09:48:00.205 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+mar-13 09:48:00.205 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+mar-13 09:48:00.205 [main] DEBUG nextflow.processor.TaskProcessor - Creating process 'publish_artifact': maxForks=0; fair=false; array=0
+mar-13 09:48:00.208 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: move_or_compress_fq_file, intersectBedWithTruthset, get_qual_filter, makeAlignmentReport, concat_bedmethyl, snp:evaluate_candidates, create_candidates, add_snp_tools_to_versions, sample_probs, publish_fabric, makeReport, validate_modbam, snp:extract_not_haplotagged_contigs, report_snp:getVersions, validateIndex, output_snp, mosdepth_coverage, eval_downsampling, mod:modkit_tobigwig, annotate_vcf, snp:cat_haplotagged_contigs, ingress:checkBamHeaders, modkit_phase, ingress:validateIndex, fastcat, getAllChromosomesBed, post_clair_phase_contig, output_cnv, merge_pileup_and_full_vars, snp:pileup_variants, refine_with_sv, mod:modkit_phase, haploblocks_snp, readStats, downsampling, evaluate_candidates, mod:concat_bedmethyl, lookup_clair3_model, aggregate_pileup_variants, filterCalls, configure_igv, failedQCReport, combine_metrics_json, mosdepth_downsampled, mosdepth_input, snp:get_qual_filter, report_snp:makeReport, call_str, vcfStats, getGenome, snp:select_het_snps, concat_refined_snp, concat_snp_vcfs, decompress_ref, aggregate_all_variants, report, snp:aggregate_all_variants, bam_read_filter, haploblocks_sv, deeptools_heatmaps, bed_filter, haploblocks, snp:merge_pileup_and_full_vars, annotate_snp_vcf, sortVCF, checkBamHeaders, prepare_reference:cram_cache, extract_not_haplotagged_contigs, mergeBams, mod:deeptools_heatmaps, publish_geneyx, filterBenchmarkVcf, cat_haplotagged_contigs, hap, make_mmi, select_het_snps, haplocheck, getVersions, callCNV, sift_clinvar_vcf, concat_str_vcfs, ingress:sortBam, ingress:check_for_alignment, generate_str_content, pileup_variants, phase_gvcf, ingress:samtools_index, bamstats, phase_contig, infer_sex, aggregate_full_align_variants, merge_tsv, sanitise_coverage_bed, cram_to_bam, bgzip_and_index_vcf, annotate_sv_vcf, samtools_index, check_for_alignment, getParams, snp:aggregate_full_align_variants, sortBam, sift_clinvar_snp_vcf, validate_sample_sheet, make_report, annotate_repeat_expansions, snp:phase_contig, post_clair_contig_haplotag, ingress:catSortBams, bam_region_filter, sniffles2, ingress:mergeBams, get_region_coverage, output_sv, modkit_tobigwig, sanitise_bed, ingress:minimap2_alignment, truvari, minimap2_alignment, publish_artifact, modkit, concat_vcfs, snp:haploblocks_snp, make_chunks, snp:create_candidates, output_str, cram_cache, faidx, gz_faidx, split_fq_file, mosdepth, snp:make_chunks, snp:aggregate_pileup_variants, snp:post_clair_contig_haplotag, snp:post_clair_phase_contig, catSortBams
+mar-13 09:48:00.211 [main] DEBUG nextflow.Session - Igniting dataflow network (77)
+mar-13 09:48:00.214 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > prepare_reference:cram_cache
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:checkBamHeaders
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:sortBam
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:mergeBams
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:catSortBams
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:validateIndex
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:samtools_index
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:check_for_alignment
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ingress:minimap2_alignment
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > sanitise_bed
+mar-13 09:48:00.215 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mosdepth_input
+mar-13 09:48:00.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > getVersions
+mar-13 09:48:00.216 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > getParams
+mar-13 09:48:00.217 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > get_region_coverage
+mar-13 09:48:00.217 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > readStats
+mar-13 09:48:00.218 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > makeAlignmentReport
+mar-13 09:48:00.218 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > failedQCReport
+mar-13 09:48:00.218 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > lookup_clair3_model
+mar-13 09:48:00.218 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:make_chunks
+mar-13 09:48:00.218 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:pileup_variants
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:pileup_variants
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:aggregate_pileup_variants
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:select_het_snps
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:select_het_snps
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:phase_contig
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:get_qual_filter
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:create_candidates
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:create_candidates
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:evaluate_candidates
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:aggregate_full_align_variants
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:merge_pileup_and_full_vars
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:merge_pileup_and_full_vars
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:post_clair_phase_contig
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:post_clair_contig_haplotag
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:extract_not_haplotagged_contigs
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:cat_haplotagged_contigs
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:aggregate_all_variants
+mar-13 09:48:00.219 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > snp:haploblocks_snp
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > bed_filter
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > vcfStats
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > report_snp:getVersions
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > report_snp:makeReport
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > output_snp
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > validate_modbam
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > sample_probs
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mod:modkit_phase
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mod:concat_bedmethyl
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mod:modkit_tobigwig
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > mod:deeptools_heatmaps
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > combine_metrics_json
+mar-13 09:48:00.220 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > publish_artifact
+mar-13 09:48:00.221 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_5161b02242faa259: /home/paula/data/ONT/wf-human-variation-paula/lib/ingress.nf
+  Script_aee6a18803c2c17b: /home/paula/data/ONT/wf-human-variation-paula/workflows/methyl.nf
+  Script_1f4d64e0dbafc111: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-cnv.nf
+  Script_ddc5a1e420459ddd: /home/paula/data/ONT/wf-human-variation-paula/workflows/wf-human-str.nf
+  Script_ae2d342b19e491c5: /home/paula/data/ONT/wf-human-variation-paula/lib/_ingress.nf
+  Script_5ecc4073a8ea4650: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-cnv-qdnaseq.nf
+  Script_28ba30b691026971: /home/paula/data/ONT/wf-human-variation-paula/modules/local/common.nf
+  Script_e7f0d09ef0a539db: /home/paula/data/ONT/wf-human-variation-paula/lib/common.nf
+  Script_2b15a73e4e14e5ae: /home/paula/data/ONT/wf-human-variation-paula/lib/igv.nf
+  Script_3dc4d3066c6a99b7: /home/paula/data/ONT/wf-human-variation-paula/workflows/wf-human-snp.nf
+  Script_7b967ab717577c93: /home/paula/data/ONT/wf-human-variation-paula/workflows/partners.nf
+  Script_164fdf6973d9f448: /home/paula/data/ONT/wf-human-variation-paula/workflows/wf-human-sv.nf
+  Script_10c5c42bf4d2e1f1: /home/paula/data/ONT/wf-human-variation-paula/workflows/wf-human-cnv.nf
+  Script_89f49827937448fb: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-snp.nf
+  Script_cc51589888d1cd19: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-sv.nf
+  Script_fc395a8e5f847137: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-str.nf
+  Script_9fd566632bf25e9c: /home/paula/data/ONT/wf-human-variation-paula/lib/model.nf
+  Script_68f33b95732f402c: /home/paula/data/ONT/wf-human-variation-paula/workflows/wf-human-cnv-qdnaseq.nf
+  Script_dbad131e46599a28: /home/paula/data/ONT/wf-human-variation-paula/modules/local/wf-human-sv-eval.nf
+  Script_802ec2a932cead45: /home/paula/data/ONT/wf-human-variation-paula/lib/reference.nf
+  Script_826023f96fe7ccff: /home/paula/data/ONT/wf-human-variation-paula/main.nf
+mar-13 09:48:00.221 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+mar-13 09:48:00.221 [main] DEBUG nextflow.Session - Session await
+mar-13 09:48:00.274 [Actor Thread 22] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://ontresearch/wf-common:shafdd79f8e4a6faad77513c36f623693977b92b08e; path=/home/paula/data/nas_rioja/singularity_cache/ontresearch-wf-common-shafdd79f8e4a6faad77513c36f623693977b92b08e.img
+mar-13 09:48:00.279 [Actor Thread 26] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://ontresearch/wf-human-variation:sha8ecee6d351b0c2609b452f3a368c390587f6662d; path=/home/paula/data/nas_rioja/singularity_cache/ontresearch-wf-human-variation-sha8ecee6d351b0c2609b452f3a368c390587f6662d.img
+mar-13 09:48:00.281 [Actor Thread 17] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://ontresearch/wf-human-variation-snp:sha8cc7e88ff71bf593d7852309a31d3adb29a7caeb; path=/home/paula/data/nas_rioja/singularity_cache/ontresearch-wf-human-variation-snp-sha8cc7e88ff71bf593d7852309a31d3adb29a7caeb.img
+mar-13 09:48:00.327 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [d4/fa7c96] Cached process > report_snp:getVersions
+mar-13 09:48:00.327 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [43/9430d3] Cached process > getVersions
+mar-13 09:48:00.327 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [60/de745f] Cached process > ingress:checkBamHeaders (1)
+mar-13 09:48:00.327 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [7f/c0660d] Cached process > prepare_reference:cram_cache (1)
+mar-13 09:48:00.351 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [2c/160ed1] Cached process > sanitise_bed (1)
+mar-13 09:48:00.351 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [5c/6b80d8] Cached process > ingress:validateIndex (1)
+mar-13 09:48:00.357 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+mar-13 09:48:00.359 [Task submitter] INFO  nextflow.Session - [8b/68f78e] Submitted process > getParams
+mar-13 09:48:00.364 [Actor Thread 33] INFO  nextflow.processor.TaskProcessor - [86/e5264e] Cached process > ingress:check_for_alignment (1)
+mar-13 09:48:00.382 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [a6/46e57e] Cached process > ingress:minimap2_alignment (1)
+mar-13 09:48:00.395 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [71/14b74b] Cached process > readStats (1)
+mar-13 09:48:00.397 [Actor Thread 14] DEBUG n.processor.TaskFileCollector - Process `mosdepth_input (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/bc/bd9c553dbdec03d33008593584ebbe/DEMO.per-base.bedgraph.gz` (pattern: `DEMO.per-base.bedgraph.gz`)
+mar-13 09:48:00.398 [Actor Thread 14] DEBUG n.processor.TaskFileCollector - Process `mosdepth_input (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/bc/bd9c553dbdec03d33008593584ebbe/DEMO.bed_summary.tsv` (pattern: `DEMO.bed_summary.tsv`)
+mar-13 09:48:00.398 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [bc/bd9c55] Cached process > mosdepth_input (1)
+mar-13 09:48:00.401 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [f0/5bee2c] Cached process > publish_artifact (1)
+mar-13 09:48:00.401 [Actor Thread 32] INFO  nextflow.processor.TaskProcessor - [8f/d4f8ad] Cached process > publish_artifact (2)
+mar-13 09:48:00.410 [Actor Thread 12] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+mar-13 09:48:00.448 [Actor Thread 14] DEBUG nextflow.processor.TaskProcessor - Process mosdepth_input > Skipping output binding because one or more optional files are missing: fileoutparam<2>
+mar-13 09:48:00.449 [Actor Thread 14] DEBUG nextflow.processor.TaskProcessor - Process mosdepth_input > Skipping output binding because one or more optional files are missing: fileoutparam<3>
+mar-13 09:48:00.456 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [4a/d92014] Cached process > publish_artifact (3)
+mar-13 09:48:00.468 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [a4/880e82] Cached process > get_region_coverage (1)
+mar-13 09:48:00.469 [Actor Thread 12] DEBUG nextflow.splitter.AbstractSplitter - Creating gzip splitter for: /home/paula/data/ONT/wf-human-variation-paula/work/a4/880e82fd4b04b30faed4fcdbda3ffc/DEMO.regions.filt.bed.gz
+mar-13 09:48:00.473 [Actor Thread 28] INFO  nextflow.Nextflow - Detected basecaller_model: dna_r10.4.1_e8.2_400bps_sup@v4.2.0
+mar-13 09:48:00.474 [Actor Thread 28] INFO  nextflow.Nextflow - Using basecaller_model: dna_r10.4.1_e8.2_400bps_sup@v4.2.0
+mar-13 09:48:00.474 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [b2/8d9a92] Cached process > publish_artifact (5)
+mar-13 09:48:00.474 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [f8/f31947] Cached process > publish_artifact (6)
+mar-13 09:48:00.474 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [68/1ebcde] Cached process > publish_artifact (4)
+mar-13 09:48:00.478 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [1e/fd1f29] Cached process > validate_modbam (1)
+mar-13 09:48:00.480 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [e1/6327fd] Cached process > lookup_clair3_model (1)
+mar-13 09:48:00.480 [Actor Thread 12] INFO  nextflow.Nextflow - Autoselected Clair3 model: r1041_e82_400bps_sup_v420
+mar-13 09:48:00.491 [Actor Thread 12] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://ontresearch/modkit:sha489d708a48c66368e5d1e118538e5dca68203a64; path=/home/paula/data/nas_rioja/singularity_cache/ontresearch-modkit-sha489d708a48c66368e5d1e118538e5dca68203a64.img
+mar-13 09:48:00.495 [Actor Thread 33] INFO  nextflow.processor.TaskProcessor - [4e/3e67a2] Cached process > sample_probs (1)
+mar-13 09:48:00.504 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [d7/699c3a] Cached process > snp:make_chunks (1)
+mar-13 09:48:00.559 [Actor Thread 22] INFO  nextflow.processor.TaskProcessor - [b7/97c90a] Cached process > snp:pileup_variants (17)
+mar-13 09:48:00.559 [Actor Thread 33] INFO  nextflow.processor.TaskProcessor - [11/4e75e6] Cached process > snp:pileup_variants (3)
+mar-13 09:48:00.559 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [e9/2814f4] Cached process > snp:pileup_variants (28)
+mar-13 09:48:00.559 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [fa/1364d0] Cached process > snp:pileup_variants (14)
+mar-13 09:48:00.559 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [59/2f8348] Cached process > snp:pileup_variants (5)
+mar-13 09:48:00.559 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [cf/9179ab] Cached process > snp:pileup_variants (4)
+mar-13 09:48:00.559 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [9a/365ae5] Cached process > snp:pileup_variants (1)
+mar-13 09:48:00.560 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [7b/b320cd] Cached process > snp:pileup_variants (30)
+mar-13 09:48:00.560 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [0d/b8d414] Cached process > snp:pileup_variants (18)
+mar-13 09:48:00.560 [Actor Thread 32] INFO  nextflow.processor.TaskProcessor - [de/925e50] Cached process > snp:pileup_variants (10)
+mar-13 09:48:00.561 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [52/bf9de7] Cached process > snp:pileup_variants (8)
+mar-13 09:48:00.561 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [4a/ef00b0] Cached process > snp:pileup_variants (9)
+mar-13 09:48:00.561 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [07/794cb0] Cached process > snp:pileup_variants (24)
+mar-13 09:48:00.561 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [4e/25c853] Cached process > snp:pileup_variants (13)
+mar-13 09:48:00.561 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [00/a1fa6d] Cached process > snp:pileup_variants (6)
+mar-13 09:48:00.561 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [31/51dd39] Cached process > snp:pileup_variants (25)
+mar-13 09:48:00.561 [Actor Thread 29] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.561 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [17/1af714] Cached process > snp:pileup_variants (23)
+mar-13 09:48:00.561 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [4f/2fe28e] Cached process > snp:pileup_variants (19)
+mar-13 09:48:00.562 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [30/b7aa4f] Cached process > snp:pileup_variants (2)
+mar-13 09:48:00.562 [Actor Thread 5] INFO  nextflow.processor.TaskProcessor - [29/dbac86] Cached process > snp:pileup_variants (26)
+mar-13 09:48:00.562 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [f4/a0071b] Cached process > snp:pileup_variants (29)
+mar-13 09:48:00.562 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [30/6b1bda] Cached process > snp:pileup_variants (27)
+mar-13 09:48:00.562 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [99/eaa5f3] Cached process > snp:pileup_variants (7)
+mar-13 09:48:00.562 [Actor Thread 15] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.562 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [b6/69f958] Cached process > snp:pileup_variants (16)
+mar-13 09:48:00.562 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [e6/cd9003] Cached process > snp:pileup_variants (21)
+mar-13 09:48:00.562 [Actor Thread 30] INFO  nextflow.processor.TaskProcessor - [17/3d68dd] Cached process > snp:pileup_variants (15)
+mar-13 09:48:00.563 [Actor Thread 34] INFO  nextflow.processor.TaskProcessor - [31/97ce1a] Cached process > snp:pileup_variants (32)
+mar-13 09:48:00.563 [Actor Thread 2] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.563 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [21/0d8726] Cached process > snp:pileup_variants (20)
+mar-13 09:48:00.563 [Actor Thread 26] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.563 [Actor Thread 24] INFO  nextflow.processor.TaskProcessor - [a4/689de2] Cached process > snp:pileup_variants (12)
+mar-13 09:48:00.564 [Actor Thread 13] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.564 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [04/b4666b] Cached process > snp:pileup_variants (11)
+mar-13 09:48:00.564 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [2f/0e6c10] Cached process > snp:pileup_variants (31)
+mar-13 09:48:00.564 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.564 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [81/96f357] Cached process > snp:pileup_variants (22)
+mar-13 09:48:00.565 [Actor Thread 27] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.565 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.566 [Actor Thread 17] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.566 [Actor Thread 1] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.567 [Actor Thread 4] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.567 [Actor Thread 22] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.568 [Actor Thread 28] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.569 [Actor Thread 19] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.570 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.570 [Actor Thread 23] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.571 [Actor Thread 5] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.571 [Actor Thread 3] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.572 [Actor Thread 16] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.573 [Actor Thread 32] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.573 [Actor Thread 38] INFO  nextflow.processor.TaskProcessor - [bb/624c33] Cached process > snp:pileup_variants (35)
+mar-13 09:48:00.574 [Actor Thread 20] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.574 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [9b/a7112d] Cached process > snp:pileup_variants (34)
+mar-13 09:48:00.574 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [7b/2c5a56] Cached process > snp:pileup_variants (36)
+mar-13 09:48:00.574 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [c4/df6d00] Cached process > snp:pileup_variants (33)
+mar-13 09:48:00.574 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [41/71df44] Cached process > snp:pileup_variants (37)
+mar-13 09:48:00.574 [Actor Thread 38] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.575 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [7b/f396e5] Cached process > snp:pileup_variants (42)
+mar-13 09:48:00.575 [Actor Thread 33] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.575 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [ab/db03ed] Cached process > snp:pileup_variants (39)
+mar-13 09:48:00.576 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [26/5974d3] Cached process > snp:pileup_variants (38)
+mar-13 09:48:00.576 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [6b/759da4] Cached process > snp:pileup_variants (41)
+mar-13 09:48:00.576 [Actor Thread 18] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.577 [Actor Thread 10] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.577 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [01/4a1bc2] Cached process > snp:pileup_variants (44)
+mar-13 09:48:00.577 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [ed/89b85e] Cached process > snp:pileup_variants (40)
+mar-13 09:48:00.577 [Actor Thread 30] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.577 [Actor Thread 34] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.578 [Actor Thread 36] INFO  nextflow.processor.TaskProcessor - [16/b611fa] Cached process > snp:pileup_variants (43)
+mar-13 09:48:00.578 [Actor Thread 11] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.578 [Actor Thread 24] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.578 [Actor Thread 36] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.579 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [52/92e5f6] Cached process > snp:pileup_variants (47)
+mar-13 09:48:00.579 [Actor Thread 4] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.579 [Actor Thread 6] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.579 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [e6/fac50c] Cached process > snp:pileup_variants (45)
+mar-13 09:48:00.579 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [c8/f0e044] Cached process > snp:pileup_variants (48)
+mar-13 09:48:00.579 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [15/643f65] Cached process > snp:pileup_variants (46)
+mar-13 09:48:00.580 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.580 [Actor Thread 17] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.581 [Actor Thread 27] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.581 [Actor Thread 26] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.581 [Actor Thread 1] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.582 [Actor Thread 2] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.582 [Actor Thread 29] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.583 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [6a/01944a] Cached process > snp:pileup_variants (49)
+mar-13 09:48:00.583 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.583 [Actor Thread 15] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.584 [Actor Thread 25] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.584 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.584 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.585 [Actor Thread 3] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.585 [Actor Thread 19] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.586 [Actor Thread 31] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.586 [Actor Thread 28] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.586 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process snp:pileup_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.605 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [2d/2eeafc] Cached process > snp:aggregate_pileup_variants (1)
+mar-13 09:48:00.619 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [5e/bfd09b] Cached process > snp:select_het_snps (1)
+mar-13 09:48:00.619 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [35/ed054d] Cached process > snp:select_het_snps (3)
+mar-13 09:48:00.621 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [53/4ff3f7] Cached process > snp:select_het_snps (2)
+mar-13 09:48:00.625 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [b3/b2343c] Cached process > snp:get_qual_filter (1)
+mar-13 09:48:00.645 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [7e/b7f40f] Cached process > snp:create_candidates (3)
+mar-13 09:48:00.645 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [47/27156b] Cached process > snp:create_candidates (1)
+mar-13 09:48:00.645 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [b2/49dddf] Cached process > snp:create_candidates (2)
+mar-13 09:48:00.653 [Actor Thread 8] DEBUG nextflow.container.SingularityCache - Singularity found local store for image=docker://ontresearch/longphase:sha4ff1cd9a6eee338a414082cb24f943bcc4ce8e7c; path=/home/paula/data/nas_rioja/singularity_cache/ontresearch-longphase-sha4ff1cd9a6eee338a414082cb24f943bcc4ce8e7c.img
+mar-13 09:48:00.660 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [b2/fa0de6] Cached process > snp:phase_contig (3)
+mar-13 09:48:00.660 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [18/4a798e] Cached process > snp:phase_contig (2)
+mar-13 09:48:00.660 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [f8/7a56ba] Cached process > snp:phase_contig (1)
+mar-13 09:48:00.700 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [b8/697a3b] Cached process > snp:evaluate_candidates (3)
+mar-13 09:48:00.700 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [4e/42231a] Cached process > snp:evaluate_candidates (2)
+mar-13 09:48:00.700 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [07/a1c46c] Cached process > snp:evaluate_candidates (1)
+mar-13 09:48:00.722 [Actor Thread 9] DEBUG n.processor.TaskFileCollector - Process `snp:aggregate_full_align_variants (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/51/239589f08417a7bfdd9e778f81e626/non_var.gvcf` (pattern: `non_var.gvcf`)
+mar-13 09:48:00.722 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [51/239589] Cached process > snp:aggregate_full_align_variants (1)
+mar-13 09:48:00.723 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process snp:aggregate_full_align_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1>
+mar-13 09:48:00.742 [Actor Thread 7] DEBUG n.processor.TaskFileCollector - Process `snp:merge_pileup_and_full_vars (3)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/f9/e22070301559c32078cbb01223ea6b/output/merge_chrM.gvcf` (pattern: `output/merge_chrM.gvcf`)
+mar-13 09:48:00.742 [Actor Thread 25] DEBUG n.processor.TaskFileCollector - Process `snp:merge_pileup_and_full_vars (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/2f/6f21c92b28cfde137905ce462b41b8/output/merge_chr6.gvcf` (pattern: `output/merge_chr6.gvcf`)
+mar-13 09:48:00.742 [Actor Thread 9] DEBUG n.processor.TaskFileCollector - Process `snp:merge_pileup_and_full_vars (2)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/34/c657989ac7cd206bcf9937d21bc953/output/merge_chr20.gvcf` (pattern: `output/merge_chr20.gvcf`)
+mar-13 09:48:00.743 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [2f/6f21c9] Cached process > snp:merge_pileup_and_full_vars (1)
+mar-13 09:48:00.743 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [f9/e22070] Cached process > snp:merge_pileup_and_full_vars (3)
+mar-13 09:48:00.743 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [34/c65798] Cached process > snp:merge_pileup_and_full_vars (2)
+mar-13 09:48:00.744 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process snp:merge_pileup_and_full_vars > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+mar-13 09:48:00.744 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process snp:merge_pileup_and_full_vars > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+mar-13 09:48:00.744 [Actor Thread 25] DEBUG nextflow.processor.TaskProcessor - Process snp:merge_pileup_and_full_vars > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+mar-13 09:48:00.752 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [29/bee2ca] Cached process > snp:post_clair_phase_contig (2)
+mar-13 09:48:00.753 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [d5/64726b] Cached process > snp:post_clair_phase_contig (1)
+mar-13 09:48:00.754 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [66/fc9327] Cached process > snp:post_clair_phase_contig (3)
+mar-13 09:48:00.771 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [98/9db434] Cached process > snp:post_clair_contig_haplotag (1)
+mar-13 09:48:00.772 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [69/372bbc] Cached process > snp:post_clair_contig_haplotag (2)
+mar-13 09:48:00.772 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [82/5baa49] Cached process > snp:post_clair_contig_haplotag (3)
+mar-13 09:48:00.798 [Actor Thread 19] DEBUG n.processor.TaskFileCollector - Process `snp:aggregate_all_variants (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/42/a4293d3431ce96e2a729ae81e016cf/DEMO.wf_snp.gvcf.gz` (pattern: `DEMO.wf_snp.gvcf.gz`)
+mar-13 09:48:00.798 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [b1/1c8373] Cached process > mod:modkit_phase (1)
+mar-13 09:48:00.798 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [fb/b72f5f] Cached process > mod:modkit_phase (3)
+mar-13 09:48:00.798 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [05/571f5c] Cached process > mod:modkit_phase (2)
+mar-13 09:48:00.799 [Actor Thread 19] DEBUG n.processor.TaskFileCollector - Process `snp:aggregate_all_variants (1)` is unable to find [UnixPath]: `/home/paula/data/ONT/wf-human-variation-paula/work/42/a4293d3431ce96e2a729ae81e016cf/DEMO.wf_snp.gvcf.gz.tbi` (pattern: `DEMO.wf_snp.gvcf.gz.tbi`)
+mar-13 09:48:00.799 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [42/a4293d] Cached process > snp:aggregate_all_variants (1)
+mar-13 09:48:00.808 [Actor Thread 19] DEBUG nextflow.processor.TaskProcessor - Process snp:aggregate_all_variants > Skipping output binding because one or more optional files are missing: fileoutparam<1:2>
+mar-13 09:48:00.815 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [3b/76dd10] Cached process > snp:haploblocks_snp (1)
+mar-13 09:48:00.816 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [3a/601825] Cached process > bed_filter (1)
+mar-13 09:48:00.818 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [b8/8c9d68] Cached process > mod:concat_bedmethyl (1)
+mar-13 09:48:00.818 [Actor Thread 34] INFO  nextflow.processor.TaskProcessor - [9b/c1f97f] Cached process > mod:concat_bedmethyl (3)
+mar-13 09:48:00.818 [Actor Thread 25] INFO  nextflow.processor.TaskProcessor - [18/f0b58a] Cached process > mod:concat_bedmethyl (2)
+mar-13 09:48:00.822 [Actor Thread 27] INFO  nextflow.processor.TaskProcessor - [fe/ddef25] Cached process > publish_artifact (9)
+mar-13 09:48:00.822 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [87/9c2240] Cached process > publish_artifact (8)
+mar-13 09:48:00.822 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [ef/d5afb2] Cached process > publish_artifact (7)
+mar-13 09:48:00.823 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [f4/48b5c9] Cached process > vcfStats (1)
+mar-13 09:48:00.824 [Actor Thread 15] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 3; slices: 1; internal sort time: 0.003 s; external sort time: 0.003 s; total time: 0.006 s
+mar-13 09:48:00.825 [Actor Thread 15] DEBUG nextflow.file.FileCollector - >> temp file exists? true
+mar-13 09:48:00.826 [Actor Thread 15] DEBUG nextflow.file.FileCollector - Retrieved cached collect-files from: /home/paula/data/ONT/wf-human-variation-paula/work/collect-file/6a54f546562c456cd82b819c29826dae
+mar-13 09:48:00.832 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [98/4111cf] Cached process > mod:modkit_tobigwig (2)
+mar-13 09:48:00.832 [Actor Thread 1] INFO  nextflow.processor.TaskProcessor - [92/38593b] Cached process > mod:modkit_tobigwig (1)
+mar-13 09:48:00.833 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [7a/7d7f88] Cached process > mod:modkit_tobigwig (3)
+mar-13 09:48:00.833 [Actor Thread 15] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-4734725566801087677
+mar-13 09:48:00.834 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [bd/3e7d43] Cached process > snp:extract_not_haplotagged_contigs (1)
+mar-13 09:48:00.842 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [16/7182d5] Cached process > snp:cat_haplotagged_contigs (1)
+mar-13 09:48:00.849 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+mar-13 09:48:00.850 [Task submitter] INFO  nextflow.Session - [cb/3d49c2] Submitted process > mod:deeptools_heatmaps (1)
+mar-13 09:48:01.482 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: getParams; status: COMPLETED; exit: 0; error: -; workDir: /home/paula/data/ONT/wf-human-variation-paula/work/8b/68f78eb08a4d0ad8bd425b4f31afa2]
+mar-13 09:48:01.482 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=96; workQueue=LinkedBlockingQueue[-1]; allowCoreThreadTimeout=false
+mar-13 09:48:01.503 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+mar-13 09:48:01.503 [Task submitter] INFO  nextflow.Session - [e8/0bdae6] Submitted process > report_snp:makeReport (1)
+mar-13 09:48:01.508 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+mar-13 09:48:01.508 [Task submitter] INFO  nextflow.Session - [c3/8d3c15] Submitted process > makeAlignmentReport
+mar-13 09:48:02.073 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 113; name: mod:deeptools_heatmaps (1); status: COMPLETED; exit: 127; error: -; workDir: /home/paula/data/ONT/wf-human-variation-paula/work/cb/3d49c26f83b08fc473ea8352218b2a]
+mar-13 09:48:02.076 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=mod:deeptools_heatmaps (1); work-dir=/home/paula/data/ONT/wf-human-variation-paula/work/cb/3d49c26f83b08fc473ea8352218b2a
+  error [nextflow.exception.ProcessFailedException]: Process `mod:deeptools_heatmaps (1)` terminated with an error exit status (127)
+mar-13 09:48:02.084 [TaskFinalizer-2] ERROR nextflow.processor.TaskProcessor - Error executing process > 'mod:deeptools_heatmaps (1)'
+
+Caused by:
+  Process `mod:deeptools_heatmaps (1)` terminated with an error exit status (127)
+
+
+Command executed:
+
+  # Identificamos los archivos de cada haplotipo por el nombre
+  BW_H1=$(ls *1-5mC.bw)
+  BW_H2=$(ls *2-5mC.bw)
+  
+  computeMatrix scale-regions \
+      -S $BW_H1 $BW_H2 \
+      -R genes_chrom20.bed \
+      --beforeRegionStartLength 3000 \
+      --regionBodyLength 5000 \
+      --afterRegionStartLength 3000 \
+      --skipZeros \
+      -o DEMO_matrix.gz
+  
+  plotHeatmap \
+      -m DEMO_matrix.gz \
+      -out DEMO_methylation_heatmap.png \
+      --colorMap RdYlBu \
+      --zMin 0 --zMax 1 \
+      --samplesLabel "Haplotipo 1" "Haplotipo 2" \
+      --heatmapHeight 25 \
+      --plotTitle "Metilación 5mC en Genes: DEMO"
+
+Command exit status:
+  127
+
+Command output:
+  (empty)
+
+Command error:
+  INFO:    Environment variable SINGULARITYENV_NXF_TASK_WORKDIR is set, but APPTAINERENV_NXF_TASK_WORKDIR is preferred
+  INFO:    Environment variable SINGULARITYENV_NXF_DEBUG is set, but APPTAINERENV_NXF_DEBUG is preferred
+  .command.sh: line 6: computeMatrix: command not found
+
+Work dir:
+  /home/paula/data/ONT/wf-human-variation-paula/work/cb/3d49c26f83b08fc473ea8352218b2a
+
+Container:
+  /home/paula/data/nas_rioja/singularity_cache/ontresearch-modkit-sha489d708a48c66368e5d1e118538e5dca68203a64.img
+
+Tip: when you have fixed the problem you can continue the execution adding the option `-resume` to the run command line
+mar-13 09:48:02.085 [TaskFinalizer-2] DEBUG nextflow.Session - Session aborted -- Cause: Process `mod:deeptools_heatmaps (1)` terminated with an error exit status (127)
+mar-13 09:48:02.102 [TaskFinalizer-2] DEBUG nextflow.Session - The following nodes are still active:
+[process] output_snp
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: fname
+  port 1: (cntrl) -     ; channel: $
+
+[process] combine_metrics_json
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: jsons
+  port 1: (queue) OPEN  ; channel: flagstat.tsv
+  port 2: (queue) OPEN  ; channel: hists
+  port 3: (queue) OPEN  ; channel: -
+  port 4: (queue) OPEN  ; channel: mosdepth.summary.txt
+  port 5: (queue) OPEN  ; channel: haplocheck
+  port 6: (queue) OPEN  ; channel: sex
+  port 7: (cntrl) -     ; channel: $
+
+[process] publish_artifact
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: fname
+  port 1: (cntrl) -     ; channel: $
+
+mar-13 09:48:02.164 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+mar-13 09:48:02.165 [TaskFinalizer-2] WARN  n.processor.TaskPollingMonitor - Killing running tasks (2)
+mar-13 09:48:02.176 [TaskFinalizer-2] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=1; ignoredCount=0; cachedCount=112; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=2; succeedDuration=4ms; failedDuration=1.1s; cachedDuration=1h 6m;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=3; peakMemory=28 GB; ]
+mar-13 09:48:02.292 [TaskFinalizer-2] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+mar-13 09:48:02.585 [TaskFinalizer-2] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+mar-13 09:48:02.618 [TaskFinalizer-2] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+mar-13 09:48:02.678 [main] DEBUG nextflow.Session - Session await > all processes finished
+mar-13 09:48:02.678 [main] DEBUG nextflow.Session - Session await > all barriers passed
+mar-13 09:48:02.680 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=1; failedCount=1; ignoredCount=0; cachedCount=112; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=2; succeedDuration=4ms; failedDuration=1.1s; cachedDuration=1h 6m;loadCpus=0; loadMemory=0; peakRunning=3; peakCpus=3; peakMemory=28 GB; ]
+mar-13 09:48:02.680 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+mar-13 09:48:02.910 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+mar-13 09:48:02.933 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+mar-13 09:48:02.938 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+mar-13 09:48:02.956 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
