@@ -173,7 +173,7 @@ process validate_modbam {
     """
 }
 
-process deeptools_heatmaps {
+process deeptools_heatmaps_old {
     label "process_medium" 
 
     container "https://depot.galaxyproject.org/singularity/deeptools:3.5.5--pyhdfd78af_0"
@@ -213,6 +213,190 @@ process deeptools_heatmaps {
         --heatmapHeight 25 \\
         --plotTitle "Metilación 5mC en Genes: ${meta.alias}"
     """
+}
+
+
+process deeptools_heatmaps {
+    label "process_medium"
+    container "https://depot.galaxyproject.org/singularity/deeptools:3.5.5--pyhdfd78af_0"
+    
+    publishDir "${params.out_dir}/deeptools", mode: 'copy'
+    
+    input:
+    tuple val(meta), path(bw_files)
+    path bed_file
+    
+    output:
+    path "${meta.alias}_methylation_heatmap.png"
+    path "${meta.alias}_methylation_heatmap_sorted.png"
+    path "${meta.alias}_methylation_profile.png"
+    path "${meta.alias}_diff_heatmap.png"
+    path "${meta.alias}_matrix.gz"
+    
+    script:
+    """
+    BW_H1=\$(ls *1-5mC.bw)
+    BW_H2=\$(ls *2-5mC.bw)
+
+    # -------------------------------------------------------
+    # 1. Matriz principal (scale-regions, más contexto)
+    # -------------------------------------------------------
+    computeMatrix scale-regions \\
+        -S \$BW_H1 \$BW_H2 \\
+        -R ${bed_file} \\
+        --beforeRegionStartLength 3000 \\
+        --regionBodyLength 5000 \\
+        --afterRegionStartLength 3000 \\
+        --skipZeros \\
+        --missingDataAsZero \\
+        --binSize 50 \\
+        --numberOfProcessors ${task.cpus} \\
+        -o ${meta.alias}_matrix.gz
+
+    # -------------------------------------------------------
+    # 2. Heatmap básico mejorado (sin clustering)
+    # -------------------------------------------------------
+    plotHeatmap \\
+        -m ${meta.alias}_matrix.gz \\
+        -out ${meta.alias}_methylation_heatmap.png \\
+        --colorMap Blues Blues \\
+        --zMin 0 --zMax 1 \\
+        --missingDataColor "#d3d3d3" \\
+        --samplesLabel "Haplotipo 1" "Haplotipo 2" \\
+        --heatmapHeight 15 \\
+        --heatmapWidth 5 \\
+        --whatToShow 'heatmap and colorbar' \\
+        --legendLocation upper-left \\
+        --plotTitle "Metilación 5mC en Genes: ${meta.alias}" \\
+        --dpi 200
+
+    # -------------------------------------------------------
+    # 3. Heatmap con k-means clustering (el más informativo)
+    #    Agrupa genes por patron de metilacion similar
+    # -------------------------------------------------------
+    plotHeatmap \\
+        -m ${meta.alias}_matrix.gz \\
+        -out ${meta.alias}_methylation_heatmap_sorted.png \\
+        --colorMap Blues Blues \\
+        --zMin 0 --zMax 1 \\
+        --missingDataColor "#d3d3d3" \\
+        --samplesLabel "Haplotipo 1" "Haplotipo 2" \\
+        --kmeans 3 \\
+        --heatmapHeight 15 \\
+        --heatmapWidth 5 \\
+        --whatToShow 'heatmap and colorbar' \\
+        --plotTitle "Metilación 5mC - Clustering: ${meta.alias}" \\
+        --dpi 200
+
+    # -------------------------------------------------------
+    # 4. Profile plot separado y mejorado
+    # -------------------------------------------------------
+    plotProfile \\
+        -m ${meta.alias}_matrix.gz \\
+        -out ${meta.alias}_methylation_profile.png \\
+        --samplesLabel "Haplotipo 1" "Haplotipo 2" \\
+        --colors "#2166ac" "#d6604d" \\
+        --plotType se \\
+        --perGroup \\
+        --plotHeight 8 \\
+        --plotWidth 12 \\
+        --plotTitle "Perfil de Metilación 5mC: ${meta.alias}" \\
+        --yAxisLabel "Metilación media 5mC" \\
+        --dpi 200
+
+    # -------------------------------------------------------
+    # 5. Heatmap de DIFERENCIA entre haplotipos
+    #    Esto es lo más relevante para tu proyecto
+    # -------------------------------------------------------
+
+    export MPLCONFIGDIR=/tmp
+    export PYTHONWARNINGS="ignore"
+python3 << 'PYEOF'
+import os
+import numpy as np
+import matplotlib
+os.environ['MPLCONFIGDIR'] = '/tmp'
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import gzip
+import json
+
+with gzip.open("${meta.alias}_matrix.gz", 'rt') as f:
+    header = json.loads(f.readline().lstrip('@'))
+    rows = []
+    for line in f:
+        fields = line.strip().split('\t')
+        # Las primeras 6 columnas son metadatos (chr,start,end,name,score,strand)
+        # A partir de la columna 6 son los valores numéricos
+        numeric = fields[6:]
+        rows.append([float(x) if x != 'nan' else np.nan for x in numeric])
+
+data = np.array(rows)
+print(f"Matriz cargada: {data.shape[0]} genes x {data.shape[1]} bins")
+
+boundaries = header['sample_boundaries']
+n_bins = boundaries[1] - boundaries[0]
+h1 = data[:, boundaries[0]:boundaries[1]]
+h2 = data[:, boundaries[1]:boundaries[2]]
+
+# Filtrar filas con >50% NaN
+nan_frac = (np.isnan(h1).mean(axis=1) + np.isnan(h2).mean(axis=1)) / 2
+mask = nan_frac < 0.5
+h1_clean = h1[mask]
+h2_clean = h2[mask]
+diff = h1_clean - h2_clean
+print(f"Genes tras filtrado NaN: {h1_clean.shape[0]}")
+
+# Ordenar por diferencia absoluta media
+order = np.argsort(np.nanmean(np.abs(diff), axis=1))[::-1]
+h1_sorted = h1_clean[order]
+h2_sorted = h2_clean[order]
+diff_sorted = diff[order]
+
+# Plot
+fig, axes = plt.subplots(1, 3, figsize=(14, 10),
+                          gridspec_kw={'width_ratios': [1, 1, 1.1]})
+
+n = n_bins
+x_pos    = [0, n//2, n-1]
+x_labels = ['-3kb', 'TSS→TE', '+3kb']
+
+configs = [
+    (h1_sorted,   'Haplotipo 1',       'Blues',   0,  1),
+    (h2_sorted,   'Haplotipo 2',       'Blues',   0,  1),
+    (diff_sorted, 'Diferencia (H1-H2)','RdBu_r', -1,  1),
+]
+
+for ax, (mat, title, cmap, vmin, vmax) in zip(axes, configs):
+    im = ax.imshow(mat, aspect='auto', cmap=cmap,
+                   vmin=vmin, vmax=vmax, interpolation='none')
+    ax.set_title(title, fontsize=11, fontweight='bold')
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels(x_labels, fontsize=8)
+    ax.set_yticks([])
+    if ax == axes[0]:
+        ax.set_ylabel('Genes', fontsize=10)
+    label = 'ΔMetilación' if 'Diferencia' in title else 'Metilación'
+    plt.colorbar(im, ax=ax, shrink=0.4, label=label)
+
+plt.suptitle("Metilación 5mC por Haplotipo y ASM: ${meta.alias}",
+             fontsize=13, fontweight='bold', y=1.01)
+plt.tight_layout()
+plt.savefig("${meta.alias}_diff_heatmap.png", dpi=200, bbox_inches='tight')
+print("Guardado: ${meta.alias}_diff_heatmap.png")
+PYEOF
+
+for f in ${meta.alias}_diff_heatmap.png \
+          ${meta.alias}_methylation_heatmap.png \
+          ${meta.alias}_methylation_heatmap_sorted.png \
+          ${meta.alias}_methylation_profile.png \
+          ${meta.alias}_matrix.gz; do
+    [ -f "\$f" ] || { echo "ERROR: falta \$f"; exit 1; }
+done
+echo "OK: todos los outputs generados"
+    """
+
+
 }
 
 

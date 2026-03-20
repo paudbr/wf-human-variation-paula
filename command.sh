@@ -1,1 +1,1 @@
-nextflow run main.nf --bam '../wf-human-variation-demo/demo.bam' --ref '../wf-human-variation-demo/demo.fasta' --bed '../wf-human-variation-demo/demo.bed' --sample_name 'DEMO' --mod --phased -profile singularity -resume
+nextflow run main.nf --bam '../wf-human-variation-demo/demo.bam' --ref '../wf-human-variation-demo/demo.fasta' --bed '../wf-human-variation-demo/demo.bed' --out_dir '../output_with_snps/' --sample_name 'DEMO' --mod --phased --snp -profile singularity 
